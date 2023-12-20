@@ -1,6 +1,6 @@
 import { Signal } from "@preact/signals";
 import { PIXEL_SIZE, WIDTH } from "../shared/constants.ts";
-import { Color, Grid } from "../shared/types.ts";
+import { Color } from "../shared/types.ts";
 import { useEffect } from "preact/hooks";
 
 export function Tiles({
