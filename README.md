@@ -15,7 +15,7 @@ deno task start
 ## 🔨 Tecnologías
 
 - [Deno](https://deno.land/)
-- [Deno KV](https://deno.land/x/kv)
+- [Deno KV](https://deno.com/kv)
 - [Deno Deploy](https://deno.com/deploy)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Preact](https://preactjs.com/)
