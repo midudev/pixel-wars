@@ -1,0 +1,7 @@
+contact_links:
+    - name: 📃 Problema de documentación
+      url: https://github.com/midudev/pixel-wars/issues/new
+      about: Reporta aquí un problema de documentación. Si ves que algo está mal escrito o redactado puedes crear un issue aquí.
+    - name: 🤔 Preguntas y ayuda
+      url: https://discord.gg/midudev
+      about: Conéctate a nuestro servidor de Discord para obtener ayuda.
