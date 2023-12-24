@@ -1,6 +1,6 @@
-import { type Signal } from "@preact/signals";
+import type { Signal } from "@preact/signals";
 import { COLORS } from "../shared/constants.ts";
-import { Color } from "../shared/types.ts";
+import type { Color } from "../shared/types.ts";
 
 export function ColorPicker({
   selected,
@@ -16,7 +16,9 @@ export function ColorPicker({
             w-8 h-8 border-4
               ${selected.value === color ? "border-white" : "border-gray-800"}
             `}
-            style={`background-color: ${color};`}
+            style={{
+              backgroundColor: color,
+            }}
             onClick={() => {
               selected.value = color;
             }}

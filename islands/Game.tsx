@@ -1,14 +1,14 @@
 import { ColorPicker } from "../components/ColorPicker.tsx";
 import { Tiles } from "../components/Tiles.tsx";
 import { COLORS } from "../shared/constants.ts";
-import { Color, Grid as GridType } from "../shared/types.ts";
+import type { Color, Grid } from "../shared/types.ts";
 import { useSignal } from "@preact/signals";
 
 export function Game(
-  { initialTiles }: { initialTiles: Color[] },
+  { initialGrid }: { initialGrid: Grid },
 ) {
   const selected = useSignal<Color>(COLORS[0]);
-  const grid = useSignal<Color[]>(initialTiles);
+  const grid = useSignal<Grid>(initialGrid);
 
   return (
     <>
