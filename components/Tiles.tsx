@@ -1,13 +1,13 @@
 import { Signal } from "@preact/signals";
 import { PIXEL_SIZE, WIDTH } from "../shared/constants.ts";
-import { Color } from "../shared/types.ts";
+import type { Color, Grid } from "../shared/types.ts";
 import { useEffect } from "preact/hooks";
 
 export function Tiles({
   grid,
   selectedColor,
 }: {
-  grid: Signal<Color[]>;
+  grid: Signal<Grid>;
   selectedColor: Color;
 }) {
   useEffect(() => {
@@ -15,8 +15,12 @@ export function Tiles({
 
     eventSource.onmessage = (event) => {
       const { index, color } = JSON.parse(event.data);
-      const gridValue = grid.value;
-      grid.value = gridValue.with(index, color);
+      const gridValue = grid.value.tiles;
+      const gridTimestamps = grid.value.versionstamps;
+      grid.value = {
+        tiles: gridValue.with(index, color),
+        versionstamps: gridTimestamps,
+      }
     };
 
     return () => eventSource.close();
@@ -36,10 +40,17 @@ export function Tiles({
       return;
     }
 
-    const { versionstamp }: { versionstamp: string } = await response.json();
+    const gridValue = grid.value.tiles;
+    const gridTimestamps = grid.value.versionstamps;
 
-    const gridValue = grid.value;
-    grid.value = gridValue.with(index, selectedColor);
+    const { versionstamp } = await response.json();
+
+    // TODO: only update if versionstamp is newer
+
+    grid.value = {
+      tiles: gridValue.with(index, selectedColor),
+      versionstamps: gridTimestamps.with(index, versionstamp),
+    };
   };
 
   return (
@@ -50,13 +61,13 @@ export function Tiles({
         grid-template-columns: repeat(${WIDTH}, 1fr);
       `}
     >
-      {grid.value.map((color, index) => (
+      {grid.value.tiles.map((color, index) => (
         <div
-          style={`
-              width: ${PIXEL_SIZE}px;
-              height: ${PIXEL_SIZE}px;
-              background-color: ${color}
-            `}
+          style={{
+            width: PIXEL_SIZE,
+            height: PIXEL_SIZE,
+            backgroundColor: color,
+          }}
           onClick={() => {
             updateGrid(index, selectedColor);
           }}

@@ -1,5 +1,5 @@
 import { CHANNELS, COLORS_NAMES, HEIGHT, KEYS, WIDTH } from "./constants.ts";
-import { Color, Grid } from "./types.ts";
+import type { Color, Grid } from "./types.ts";
 
 const db = await Deno.openKv();
 
