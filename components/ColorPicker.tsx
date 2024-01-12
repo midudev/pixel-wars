@@ -32,14 +32,15 @@ export function ColorPicker({
               w-8 h-8 border-4
               ${selected.value === color ? "border-white" : "border-gray-800"}
             `}
-            style={{
-              backgroundColor: color,
-            }}
-            onClick={() => {
-              selected.value = color;
-            }}
-          />
-          <span class="text-xs">{idx + 1}</span>
+              style={{
+                backgroundColor: color,
+              }}
+              onClick={() => {
+                selected.value = color;
+              }}
+            />
+            <span class="text-xs">{idx + 1}</span>
+          </div>
         ))}
       </div>
     </footer>
