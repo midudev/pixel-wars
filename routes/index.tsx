@@ -3,7 +3,7 @@ import { Game } from "../islands/Game.tsx";
 import { getGrid } from "../shared/db.ts";
 
 export default async function Home() {
-  const { tiles } = await getGrid();
+  const initialGrid = await getGrid();
 
   return (
     <>
@@ -11,7 +11,7 @@ export default async function Home() {
         <title>pixel-wars</title>
       </Head>
 
-      <Game initialTiles={tiles} />
+      <Game initialGrid={initialGrid} />
     </>
   );
 }
