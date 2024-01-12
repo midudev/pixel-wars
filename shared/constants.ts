@@ -23,3 +23,14 @@ export const KEYS = {
 export const CHANNELS = {
   PIXEL_UPDATE: "pixel-update",
 };
+
+export const COLORS_KEYBOARD_MAP = {
+  Digit1: COLORS_NAMES.red,
+  Digit2: COLORS_NAMES.green,
+  Digit3: COLORS_NAMES.blue,
+  Digit4: COLORS_NAMES.yellow,
+  Digit5: COLORS_NAMES.brightBlue,
+  Digit6: COLORS_NAMES.pink,
+  Digit7: COLORS_NAMES.white,
+  Digit8: COLORS_NAMES.black,
+};
